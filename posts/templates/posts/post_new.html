@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %} New Post {% endblock title %}
+
+{% block content %}
+<div class="flex items-center justify-center">
+  <div class="bg-white p-8 w-full max-w-lg font-news">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center font-news">NEWS UPDATE</h1>
+    <form class="space-y-6 font-news" action="{% url 'posts:new-post' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div>
+        <label for="title" class="block text-gray-700">News Title</label>
+        <input type="text" name="title" id="title" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent" required>
+      </div>
+      <div>
+        <label for="body" class="block text-gray-700">Body</label>
+        <textarea name="body" id="body" rows="6" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent" required></textarea>
+      </div>
+      <div>
+        <label for="slug" class="block text-gray-700">Slug</label>
+        <input type="text" name="slug" id="slug" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent" required>
+      </div>
+     <div class="relative">
+              <label for="banner" class="block text-gray-700 mb-2">Banner</label>
+              <input type="file" name="banner" id="banner" class="hidden">
+          <div class="flex items-center justify-between bg-white px-4 py-2 border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-black focus-within:border-transparent">
+            <span id="file-name" class="text-gray-500">No file chosen</span>
+            <button type="button" class="bg-black text-white px-4 py-2 rounded-lg" onclick="document.getElementById('banner').click()">Upload</button>
+          </div>
+     </div>
+      <script>
+        const fileInput = document.getElementById('banner');
+        const fileName = document.getElementById('file-name');
+
+        fileInput.addEventListener('change', () => {
+          if (fileInput.files.length > 0) {
+            fileName.textContent = fileInput.files[0].name;
+          } else {
+            fileName.textContent = 'No file chosen';
+          }
+        });
+      </script>
+      <div>
+        <button class="w-full bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50" type="submit">Add Post</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

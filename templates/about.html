@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+About 
+{% endblock title %}
+
+{% block content %}
+<div class="cursor-pointer">
+  <section>
+    <div class="relative cursor-pointer">
+      <div class="px-4 md:px-6 lg:px-8 pt-3">
+        <img
+          src="/media/obama.webp"
+          alt="Image description"
+           class="object-cover h-52 sm:h-[10rem] md:h-[23rem] w-full rounded-lg shadow-md"
+        />
+        <div class="absolute inset-0 flex flex-col items-center justify-center">
+          <h1
+            class="text-white text-2xl sm:text-4xl md:text-6xl font-extrabold font-news mx-4 md:ml-20 md:mt-10"
+          >We don't Just think.</h1>
+          <h1
+            class="text-gray-500 text-2xl sm:text-4xl md:text-6xl font-bold font-news mx-4 md:ml-20 md:mt-3"
+          >We do.</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock content %}
